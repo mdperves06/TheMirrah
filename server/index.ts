@@ -1,18 +1,27 @@
-// server/index.ts
-// Express proxy for the Anthropic Messages API. API key remains strictly server-side.
-
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const distPath = path.resolve(__dirname, '../dist');
+
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static assets if production build exists
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+}
 
 // System prompts for each seat
 const SEAT_PROMPTS: Record<string, string> = {
@@ -176,7 +185,18 @@ Evaluate strictly on the 5-point rubric and output raw JSON only.`;
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`[Mirrah AI Proxy] Running on http://localhost:${PORT}`);
-  console.log(`[Mirrah AI Proxy] Key status: ${ANTHROPIC_API_KEY ? 'Present' : 'Not set (offline mode active)'}`);
+// SPA catch-all fallback for client-side routing
+if (fs.existsSync(distPath)) {
+  app.get('*', (req: Request, res: Response) => {
+    if (req.path.startsWith('/api')) {
+      return res.status(404).json({ error: 'Endpoint not found' });
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`[Mirrah Server] Running on http://0.0.0.0:${PORT}`);
+  console.log(`[Mirrah Server] Static files: ${fs.existsSync(distPath) ? distPath : 'Not found (API only)'}`);
+  console.log(`[Mirrah Server] Key status: ${ANTHROPIC_API_KEY ? 'Present' : 'Not set (offline fallback active)'}`);
 });

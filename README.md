@@ -87,6 +87,13 @@ npm run server
 ```
 The server will run on `http://localhost:3001` and proxy `/api/delegate` and `/api/coach`.
 
+### 5. Deploying to Render (Web Service)
+- **Service Type:** Web Service (Node)
+- **Build Command:** `npm install && npm run build`
+- **Start Command:** `npm run start`
+- **Environment Variables (Optional):** `ANTHROPIC_API_KEY=your_key`
+The unified production server automatically serves the compiled frontend (`dist/`) and handles client-side routing fallback and `/api/*` requests on the assigned port.
+
 ---
 
 ## 🛠 Tech Stack
