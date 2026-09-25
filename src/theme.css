@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-parchment-base: #f1e7d0;
+  --color-ink: #2a2118;
+  --color-kharaan: #c9a13b;
+  --color-zahari: #3f7d52;
+  --color-seam: #b5402f;
+  --color-ashen: #3a3a3a;
+  --color-concord: #3b5775;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #14100c;
+  color: #f1e7d0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom parchment & document styling */
+.parchment-panel {
+  background: linear-gradient(135deg, rgba(34, 26, 19, 0.95) 0%, rgba(22, 17, 13, 0.92) 100%);
+  border: 1px solid rgba(201, 161, 59, 0.25);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(241, 231, 208, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.parchment-panel-light {
+  background: linear-gradient(135deg, #fbf7ee 0%, #f1e7d0 100%);
+  border: 1px solid #d5be93;
+  color: #2a2118;
+  box-shadow: 0 4px 20px -2px rgba(42, 33, 24, 0.15);
+}
+
+.document-frame {
+  position: relative;
+  border: 1px solid rgba(201, 161, 59, 0.35);
+}
+
+.document-frame::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 1px solid rgba(201, 161, 59, 0.15);
+  pointer-events: none;
+}
+
+/* Corner brass rivets */
+.rivet-tl, .rivet-tr, .rivet-bl, .rivet-br {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f1e7d0 20%, #c9a13b 70%, #4d3d2c 100%);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+.rivet-tl { top: 6px; left: 6px; }
+.rivet-tr { top: 6px; right: 6px; }
+.rivet-bl { bottom: 6px; left: 6px; }
+.rivet-br { bottom: 6px; right: 6px; }
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(26, 20, 15, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: #4d3d2c;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a13b;
+}
+
+/* Radar chart & Recharts styling */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(241, 231, 208, 0.1) !important;
+}
+
+.recharts-polar-grid-angle line,
+.recharts-polar-grid-concentric circle,
+.recharts-polar-grid-concentric polygon {
+  stroke: rgba(201, 161, 59, 0.2) !important;
+}
