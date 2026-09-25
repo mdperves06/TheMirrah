@@ -20,10 +20,10 @@ export const Navbar: React.FC = () => {
   const [showHowToPlay, setShowHowToPlay] = useState(false);
 
   const navLinks = [
-    { to: '/', label: 'Atlas (3D)', icon: <Compass className="w-4 h-4" /> },
+    { to: '/', label: 'Field Atlas', icon: <Compass className="w-4 h-4" /> },
     { to: '/codex', label: 'Briefing Codex', icon: <BookOpen className="w-4 h-4" /> },
-    { to: '/campaign', label: 'Campaign Drill', icon: <Swords className="w-4 h-4" /> },
-    { to: '/sanctions', label: 'Sanctions Sandbox', icon: <ShieldAlert className="w-4 h-4" /> },
+    { to: '/campaign', label: 'The Plenary', icon: <Swords className="w-4 h-4" /> },
+    { to: '/sanctions', label: 'Sanctions Register', icon: <ShieldAlert className="w-4 h-4" /> },
     { to: '/coach', label: 'Delegate Coach', icon: <GraduationCap className="w-4 h-4" /> },
   ];
 

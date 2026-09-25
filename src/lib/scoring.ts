@@ -97,28 +97,33 @@ export function evaluateOfflineSpeech(
   const fixes: string[] = [];
 
   if (scenarioAccuracy >= 18) {
-    strengths.push("Excellent retention and deployment of verified Mirrah scenario lore and accurate regional designations.");
+    strengths.push("Your argument grounds itself in hard leverage: citing the exact dependency on northern Veridium reserves forces the room to reckon with reality.");
   } else {
-    fixes.push("Ground your argument deeper in concrete facts (cite the Tishrin Massacre, the 14-year-old cancelled referendum, or specific resource hubs).");
+    fixes.push("Anchor your speech in specific scenario leverage: cite Queen Solvane's voided referendum, the Tishrin precedent, or the Suni Wells siege to create bargaining pressure.");
   }
 
   if (diplomacyTone >= 15) {
-    strengths.push("Maintained an authentic, high-level diplomatic register suited for an emergency Concord plenary.");
+    strengths.push("Your tone is controlled, authoritative, and parliamentary—giving the chair actionable compromise language rather than raw grievance.");
   } else {
-    fixes.push("Elevate parliamentary tone: avoid raw emotive ultimatums and adopt formal multilateral phrasing.");
+    fixes.push("Control your register: avoid emotional ultimatums that give hardliners an excuse to break quorum; frame demands as collective stability measures.");
   }
 
   if (coalitionLogic >= 14) {
-    strengths.push("Skillfully targeted the fractures in the room, distinguishing between neutral observers and partisan blocs.");
+    strengths.push("Skillfully exploited the room's fault lines by playing the northern energy bloc against maritime Duskore consumers.");
   } else {
-    fixes.push("Exploit Concord internal divisions: remember that northern realms need Veridium while maritime realms covet Duskore.");
+    fixes.push("Split the Concord: remind delegations that southern Duskore is essential for guidance aerospace while northern Veridium powers regional batteries.");
   }
 
-  if (strengths.length < 2) {
-    strengths.push("Clear strategic intent and proactive defense of core constituency survival.");
+  if (resourcefulnessLeverage >= 14) {
+    strengths.push("Excellent leverage trade: you didn't offer concessions for free, but demanded verifiable oversight in return.");
+  } else {
+    fixes.push("Never give away leverage for free: trade access for monitored humanitarian guarantees rather than offering access unconditionally.");
   }
-  if (fixes.length < 2) {
-    fixes.push("Add verifiable enforcement mechanisms: specify inspection protocols or phased verification timelines.");
+
+  if (draftingSpecificity >= 11) {
+    strengths.push("Strong operative drafting: specific timelines, verification mechanisms, and clear demilitarized perimeters.");
+  } else {
+    fixes.push("Add concrete operative mechanics: specify a 5km buffer zone, neutral Concord observer escorts, or escrow royalty accounts.");
   }
 
   let exemplarLine = "";

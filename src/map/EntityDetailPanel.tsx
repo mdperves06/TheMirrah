@@ -157,6 +157,18 @@ export const EntityDetailPanel: React.FC = () => {
     diplomaticImplication = 'Geographic terrain features shape tactical defensibility and corridor security.';
   }
 
+  let subtitle = '';
+  if (selectedEntityId === 'Beymouth') {
+    categoryLabel = 'Contested • Trade Flashpoint';
+    subtitle = 'One of the most volatile points along the Seam.';
+  } else if (selectedEntityId === 'SuniWells') {
+    categoryLabel = 'Restricted Water Source';
+    subtitle = 'Humanitarian pressure point — 80,000 civilians affected.';
+  } else if (selectedEntityId === 'VaelRidge') {
+    categoryLabel = 'Strategic Redoubt • Duskore Monopoly';
+    subtitle = 'Zahari industrial leverage against Concord aerospace.';
+  }
+
   const handleCenterCamera = () => {
     const coords = getEntityCoordinates(selectedEntityId);
     if (coords) {
@@ -181,6 +193,11 @@ export const EntityDetailPanel: React.FC = () => {
           <h3 className="text-xl font-serif font-black text-parchment-100 leading-tight">
             {title}
           </h3>
+          {subtitle && (
+            <p className="text-[11px] text-amber-300/90 font-serif italic mt-0.5">
+              "{subtitle}"
+            </p>
+          )}
           <div className="flex items-center gap-2 mt-1 text-[11px] text-parchment-400">
             <span>Control: <strong className="text-parchment-200">{controller}</strong></span>
           </div>
@@ -207,7 +224,7 @@ export const EntityDetailPanel: React.FC = () => {
         {/* Intelligence Overview */}
         <div>
           <h4 className="text-[10px] font-mono uppercase tracking-wider text-kharaan-light mb-1 font-bold">
-            Tactical Overview
+            Field Assessment
           </h4>
           <p className="text-[11px] leading-relaxed text-parchment-300">
             {overview}
@@ -217,7 +234,7 @@ export const EntityDetailPanel: React.FC = () => {
         {/* Strategic Significance */}
         <div>
           <h4 className="text-[10px] font-mono uppercase tracking-wider text-kharaan-light mb-1 font-bold">
-            Strategic Significance (Why it Matters)
+            Why This Matters (Negotiating Leverage)
           </h4>
           <p className="text-[11px] leading-relaxed text-parchment-200 bg-parchment-900/70 p-2.5 rounded-lg border border-parchment-400/15">
             {strategicSignificance}
@@ -228,7 +245,7 @@ export const EntityDetailPanel: React.FC = () => {
         {diplomaticImplication && (
           <div className="bg-kharaan/10 border border-kharaan/20 p-2.5 rounded-lg">
             <strong className="text-[10px] font-mono uppercase tracking-wider text-kharaan block mb-0.5">
-              Negotiation Implication:
+              Room for Movement & Red Lines:
             </strong>
             <p className="text-[11px] text-parchment-300 leading-snug">
               {diplomaticImplication}
@@ -302,7 +319,7 @@ export const EntityDetailPanel: React.FC = () => {
             className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-kharaan hover:bg-kharaan-light text-ink-dark font-serif font-bold text-xs rounded-lg shadow-gold-glow transition-all hover:scale-[1.01]"
           >
             <Award className="w-3.5 h-3.5" />
-            <span>Test Scenario Mastery on this Entity</span>
+            <span>Test the Brief on this Site</span>
           </button>
         ) : (
           <button

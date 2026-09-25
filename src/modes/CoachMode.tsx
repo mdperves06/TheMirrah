@@ -103,11 +103,11 @@ export const CoachMode: React.FC = () => {
             <div className="flex items-center gap-2">
               <GraduationCap className="w-5 h-5 text-kharaan" />
               <h2 className="text-2xl font-serif font-black text-parchment-100 tracking-wide">
-                Best Delegate Performance Lab & Mastery Engine
+                The Delegate Coach: Speech & Resolution Lab
               </h2>
             </div>
             <p className="text-xs text-parchment-400 mt-1">
-              Submit diplomatic interventions evaluated against the 5-point Model UN rubric. Track your readiness across all scenario dimensions.
+              Submit diplomatic interventions evaluated against the 5-point Model UN rubric. Learn where your argument leaks leverage before stepping to the podium.
             </p>
           </div>
 
@@ -312,7 +312,7 @@ export const CoachMode: React.FC = () => {
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4" />
-                      <span>Evaluate Against Rubric</span>
+                      <span>Adjudicate Move [Evaluate Rubric]</span>
                     </>
                   )}
                 </button>

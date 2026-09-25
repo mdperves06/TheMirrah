@@ -97,10 +97,10 @@ export const CodexMode: React.FC = () => {
           <div className="mb-4">
             <h2 className="text-base font-serif font-bold text-parchment-100 flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-kharaan" />
-              <span>Scenario Codex</span>
+              <span>Briefing Dossier</span>
             </h2>
             <p className="text-[11px] text-parchment-400 mt-0.5">
-              Confidential briefing documentation for diplomatic personnel.
+              Confidential archival intelligence for accredited delegates.
             </p>
           </div>
 

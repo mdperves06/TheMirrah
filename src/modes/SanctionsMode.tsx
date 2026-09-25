@@ -78,9 +78,9 @@ export const SanctionsMode: React.FC = () => {
     // Strict validation against "Who it can target" rules
     if (!inst.allowedTargetTypes.includes(target.targetType)) {
       setRuleWarning(
-        `Targeting Violation: ${inst.name} is legally restricted to [${inst.allowedTargetTypes.join(
+        `Not Permitted Under Concord Law: ${inst.name} is legally restricted to ${inst.allowedTargetTypes.join(
           ', '
-        )}]. "${target.name}" is designated as a ${target.targetType}.`
+        )}. "${target.name}" is designated as a ${target.targetType}. Use an Assets Freeze or Arms Embargo instead.`
       );
       return;
     }

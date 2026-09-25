@@ -217,6 +217,38 @@ export const CampaignMode: React.FC = () => {
               ))}
             </ul>
           </div>
+
+          {/* Current Room Psychological Representation */}
+          <div className="p-3 rounded-lg bg-parchment-900/60 border border-kharaan/25 text-xs space-y-2">
+            <h4 className="font-mono text-[10px] uppercase tracking-wider text-kharaan font-bold flex items-center justify-between">
+              <span>Current Room Posture</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            </h4>
+            <div className="space-y-1.5 text-[11px]">
+              <div className="flex justify-between items-center">
+                <span className="text-kharaan-light font-serif">Kharaan:</span>
+                <span className="font-mono text-[10px] text-parchment-300">
+                  {kharaanTrust >= 60 ? 'Receptive to Compromise' : kharaanTrust >= 40 ? 'Guarded & Legalistic' : 'Hardline / Brinkmanship'}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-zahari-light font-serif">Zahari Front:</span>
+                <span className="font-mono text-[10px] text-parchment-300">
+                  {zahariTrust >= 60 ? 'Constructive Bargaining' : zahariTrust >= 40 ? 'Suspicious / Demands Relief' : 'Outraged / Ultimatums'}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-concord-light font-serif">Concord Mediator:</span>
+                <span className="font-mono text-[10px] text-parchment-300">
+                  Pressure for 3-Day Breakthrough
+                </span>
+              </div>
+            </div>
+            <div className="pt-1.5 border-t border-parchment-400/10 text-[10px] text-parchment-400">
+              <span className="font-bold text-kharaan">Active Fault Line: </span>
+              {currentPhase === 1 ? 'Seam Ceasefire & Buffer Demarcation' : currentPhase === 2 ? 'Suni Wells Water Siege & Duskore Quotas' : 'Target Register Enforcement & Amnesty'}
+            </div>
+          </div>
         </div>
 
         {/* Campaign Reset Button */}
@@ -306,11 +338,17 @@ export const CampaignMode: React.FC = () => {
             );
           })}
 
-          {/* AI Thinking Animation Indicator */}
+          {/* Authentic Diplomatic Caucus / Deliberation State */}
           {isAiThinking && (
-            <div className="flex items-center gap-2 text-xs text-parchment-400 italic px-2 animate-pulse">
+            <div className="flex items-center gap-2 text-xs text-parchment-300 italic px-2 animate-pulse font-serif">
               <span className="w-2 h-2 rounded-full bg-kharaan" />
-              <span>AI delegates formulating diplomatic counter-proposals...</span>
+              <span>
+                {playerSeat === 'kharaan'
+                  ? 'Reading the room... The Zahari Front caucus is reviewing counter-demands...'
+                  : playerSeat === 'zahari'
+                  ? 'Reading the room... Kingdom plenipotentiaries are conferring with Solmaran legal counsel...'
+                  : 'Reading the room... The plenary secretariat is formulating compromise terms...'}
+              </span>
             </div>
           )}
 
@@ -368,10 +406,12 @@ export const CampaignMode: React.FC = () => {
           <div className="p-4 bg-kharaan/10 border-t border-b border-kharaan/40 flex items-center justify-between px-6 backdrop-blur-md">
             <div>
               <h4 className="font-serif font-bold text-kharaan text-sm">
-                Phase {currentPhase} Objectives Concluded
+                Phase {currentPhase} Concluded
               </h4>
               <p className="text-xs text-parchment-300">
-                Action budget exhausted. Ready to advance to Phase {currentPhase + 1}.
+                {currentPhase === 1
+                  ? 'The ceasefire framework holds — for now. Now the difficult part: territory and resources.'
+                  : 'Resource quotas tabled in plenary. Advancing to sanctions and final enforcement.'}
               </p>
             </div>
             <button
@@ -391,13 +431,13 @@ export const CampaignMode: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-kharaan" />
                   <h4 className="font-serif font-black text-parchment-100 text-base">
-                    Drill Concluded — Outcome: {campaignOutcome === 'success' ? 'Talks Succeeded' : 'Talks Collapsed'}
+                    {campaignOutcome === 'success' ? 'Framework Secured — Talks Survived First Test' : 'Talks Collapsed — 28-Year Curse Continues'}
                   </h4>
                 </div>
                 <p className="text-xs text-parchment-300 mt-1">
                   {campaignOutcome === 'success'
                     ? 'A fragile multilateral framework was ratified! Seam trade reopened and the Ashen Hand marginalized.'
-                    : 'Talks fractured under the 3-day collapse curse. Escalating military tensions resume along the border.'}
+                    : 'The plenary fractured under irreconcilable red lines. Forward garrisons resume tactical mobilization.'}
                 </p>
               </div>
               <button
@@ -485,7 +525,7 @@ export const CampaignMode: React.FC = () => {
                 disabled={!inputMessage.trim() || isAiThinking || phaseTurnsLeft <= 0}
                 className="px-5 py-2.5 bg-kharaan hover:bg-kharaan-light disabled:opacity-40 disabled:cursor-not-allowed text-ink-dark font-serif font-bold text-xs rounded-lg shadow-gold-glow transition-all flex items-center gap-1.5"
               >
-                <span>Deliver</span>
+                <span>Deliver Intervention</span>
                 <Send className="w-3.5 h-3.5" />
               </button>
             </form>
